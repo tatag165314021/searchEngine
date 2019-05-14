@@ -138,6 +138,7 @@ public class TextFileIndexer extends javax.swing.JFrame {
         adddDoc = new javax.swing.JMenuItem();
         info = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        infocari = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -197,6 +198,14 @@ public class TextFileIndexer extends javax.swing.JFrame {
             }
         });
         info.add(jMenuItem1);
+
+        infocari.setText("cara cari");
+        infocari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                infocariActionPerformed(evt);
+            }
+        });
+        info.add(infocari);
 
         jMenuBar1.add(info);
 
@@ -294,7 +303,7 @@ public class TextFileIndexer extends javax.swing.JFrame {
             Logger.getLogger(TextFileIndexer.class.getName()).log(Level.SEVERE, null, ex);
         }
         IndexSearcher searcher = new IndexSearcher(reader);
-        TopScoreDocCollector collector = TopScoreDocCollector.create(5, true);
+        TopScoreDocCollector collector = TopScoreDocCollector.create(50, true);
 
         s = "";
 
@@ -322,7 +331,7 @@ public class TextFileIndexer extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error searching " + s + " : " + e.getMessage());
         } finally {
-            collector = TopScoreDocCollector.create(5, true);
+            collector = TopScoreDocCollector.create(50, true);
         }
 
         // hapus seluruh file index pencarian
@@ -356,6 +365,10 @@ public class TextFileIndexer extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         JOptionPane.showMessageDialog(null, "untuk add document caranya klik file lalu add doc jika sudah klik cari saja");
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void infocariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infocariActionPerformed
+        JOptionPane.showMessageDialog(null, "klik tombol cari 2 kali (double click)");
+    }//GEN-LAST:event_infocariActionPerformed
 
     /**
      * @param args the command line arguments
@@ -398,6 +411,7 @@ public class TextFileIndexer extends javax.swing.JFrame {
     private javax.swing.JTextField cariTxt;
     private javax.swing.JTextField dirTxt;
     private javax.swing.JMenu info;
+    private javax.swing.JMenuItem infocari;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
